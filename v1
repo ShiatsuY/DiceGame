@@ -1,0 +1,44 @@
+object main extends App {
+
+  println("THE DICE!")
+  println("----------------------------")
+  println("Player 1:")
+  var p1 = new Player()
+  println("Player 2:")
+  var p2 = new Player()
+  println("----------------------------")
+  //--------
+  val r = new scala.util.Random
+  //--------
+  while (p1.hp > 0 && p2.hp > 0) {
+    var roll = 0
+    println(p1.name + " rolls the DICE!")
+    roll = r.nextInt(6)+1
+    println("=> " + roll + " DAMAGE!")
+    p2.reduceHp(roll)
+    //----------------------------------
+    println(p2.name + " rolls the DICE!")
+    roll = r.nextInt(6)+1
+    println("=> " + roll + " DAMAGE!")
+    p1.reduceHp(roll)
+    println("----------------------------")
+  }
+  if (p1.hp > 0) {
+    println(p1.name + " won!")
+  } else if (p2.hp > 0){
+    println(p2.name + " won!")
+  } else {
+    println("DRAW!!!")
+  }
+}
+
+
+class Player() {
+  var hp: Int = 20
+  val name: String = scala.io.StdIn.readLine()
+
+  def reduceHp(damage: Int): Unit = {
+    hp = hp - damage
+    println(name + " => " + hp + " HP")
+  }
+}
