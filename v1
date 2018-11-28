@@ -4,15 +4,14 @@ object main extends App {
   println("----------------------------")
   println("Player 1:")
   val p1 = scala.io.StdIn.readLine()
-  val p1hp = 20
   println("Player 2:")
   var p2 = scala.io.StdIn.readLine()
-  val p2hp = 20
+  val hp = 20
   println("----------------------------")
   //--------
   val r = new scala.util.Random
   //--------
-  logic(p1hp, p2hp)
+  logic(hp, hp)
 
   def logic(p1hp: Int, p2hp: Int): Unit = {
     if (p1hp > 0 && p2hp > 0) {
