@@ -13,58 +13,29 @@ object main extends App {
   val r = new scala.util.Random
   //--------
   logic(p1hp, p2hp)
+
   def logic(p1hp: Int, p2hp: Int): Unit = {
     if (p1hp > 0 && p2hp > 0) {
       println(p1 + " rolls the DICE!")
-      val r1 = r.nextInt(6)+1
+      val r1 = r.nextInt(6) + 1
       println("=> " + r1 + " DAMAGE!")
+      println(p2 + " => " + (p2hp - r1) + " HP")
       //----------------------------------
       println(p2 + " rolls the DICE!")
-      val r2 = r.nextInt(6)+1
+      val r2 = r.nextInt(6) + 1
       println("=> " + r2 + " DAMAGE!")
+      println(p1 + " => " + (p1hp - r2) + " HP")
       println("----------------------------")
       //----------------------------------
-      logic(p1hp-r1, p2hp-r2)
+      logic(p1hp - r1, p2hp - r2)
     } else {
       if (p1hp > 0) {
         println(p1 + " won!")
-      } else if (p2hp > 0){
+      } else if (p2hp > 0) {
         println(p2 + " won!")
       } else {
         println("DRAW!!!")
       }
     }
-  }
-  /*
-  while (p1.hp > 0 && p2.hp > 0) {
-    var roll = 0
-    println(p1.name + " rolls the DICE!")
-    roll = r.nextInt(6)+1
-    println("=> " + roll + " DAMAGE!")
-    p2.reduceHp(roll)
-    //----------------------------------
-    println(p2.name + " rolls the DICE!")
-    roll = r.nextInt(6)+1
-    println("=> " + roll + " DAMAGE!")
-    p1.reduceHp(roll)
-    println("----------------------------")
-  }
-  if (p1.hp > 0) {
-    println(p1.name + " won!")
-  } else if (p2.hp > 0){
-    println(p2.name + " won!")
-  } else {
-    println("DRAW!!!")
-  }*/
-}
-
-
-class Player() {
-  var hp: Int = 20
-  val name: String = scala.io.StdIn.readLine()
-
-  def reduceHp(damage: Int): Unit = {
-    hp = hp - damage
-    println(name + " => " + hp + " HP")
   }
 }
