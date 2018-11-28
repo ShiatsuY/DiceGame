@@ -10,6 +10,33 @@ object main extends App {
   //--------
   val r = new scala.util.Random
   //--------
+  logic()
+  def logic(): Unit = {
+    if (p1.hp > 0 && p2.hp > 0) {
+      var roll = 0
+      println(p1.name + " rolls the DICE!")
+      roll = r.nextInt(6)+1
+      println("=> " + roll + " DAMAGE!")
+      p2.reduceHp(roll)
+      //----------------------------------
+      println(p2.name + " rolls the DICE!")
+      roll = r.nextInt(6)+1
+      println("=> " + roll + " DAMAGE!")
+      p1.reduceHp(roll)
+      println("----------------------------")
+      //----------------------------------
+      logic()
+    } else {
+      if (p1.hp > 0) {
+        println(p1.name + " won!")
+      } else if (p2.hp > 0){
+        println(p2.name + " won!")
+      } else {
+        println("DRAW!!!")
+      }
+    }
+  }
+  /*
   while (p1.hp > 0 && p2.hp > 0) {
     var roll = 0
     println(p1.name + " rolls the DICE!")
@@ -29,7 +56,7 @@ object main extends App {
     println(p2.name + " won!")
   } else {
     println("DRAW!!!")
-  }
+  }*/
 }
 
 
